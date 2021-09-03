@@ -1,0 +1,11 @@
+@use '../helpers/variables' as var;
+
+body {
+  background-color: var.$bodyColor;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: min(90vw, 1170px);
+}

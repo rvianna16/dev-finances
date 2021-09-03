@@ -1,0 +1,15 @@
+@use '../helpers/variables' as var;
+
+#header {
+  background: var.$headerColor;
+  text-align: center;
+  padding: 2rem 0 8rem;
+
+  i {
+    font-size: 25px;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    color: white;
+  }
+}

@@ -1,0 +1,68 @@
+@use '../helpers/variables' as var;
+
+.card__container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(3, 250px);
+  gap: 30px;
+  margin: 2rem 0;
+
+  .card {
+    background: var.$cardColor;
+    border-radius: 0.25rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.5s;
+    }
+
+    .card__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1rem;
+      color: #1d0a0a;
+      font-weight: normal;
+
+      i {
+        font-size: 1.5rem;
+
+        &.income-icon {
+          color: var.$incomeColor;
+        }
+        &.expense-icon {
+          color: var.$expenseColor;
+        }
+      }
+    }
+
+    .card__price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      line-height: 3rem;
+      margin-top: 0.5rem;
+      word-break: break-all;
+    }
+
+    &.total {
+      background: #18ad5e !important;
+      transition: 0.5s;
+
+      &.negative {
+        background-color: #d34040 !important;
+      }
+
+      .card__title,
+      .card__price {
+        color: #fff;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 850px) {
+    display: block;
+  }
+}

@@ -1,0 +1,311 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f2f5;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: min(90vw, 1170px);
+}
+
+#header {
+  background: linear-gradient(to bottom, #cf2b4f, #980021 130%);
+  text-align: center;
+  padding: 2rem 0 8rem;
+}
+#header i {
+  font-size: 25px;
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  color: white;
+}
+
+#main #balance {
+  margin-top: -8rem;
+}
+#main #transactions {
+  display: block;
+  overflow-x: auto;
+}
+#main #transactions .transactions__table {
+  color: #a5a1a1;
+  border-spacing: 0 0.5rem;
+  width: 100%;
+}
+#main #transactions .transactions__table thead tr th {
+  background: #fff;
+  text-align: left;
+  font-weight: normal;
+  padding: 1rem 2rem;
+}
+#main #transactions .transactions__table thead tr th:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+#main #transactions .transactions__table thead tr th:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+#main #transactions .transactions__table tbody tr {
+  opacity: 0.8;
+}
+#main #transactions .transactions__table tbody tr:hover {
+  opacity: 1;
+}
+#main #transactions .transactions__table tbody tr td {
+  background-color: #fff;
+  padding: 1rem 2rem;
+}
+#main #transactions .transactions__table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+#main #transactions .transactions__table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+#main #transactions .transactions__table tbody tr td.description {
+  color: #1a1c1e;
+}
+#main #transactions .transactions__table tbody tr td.income {
+  color: #12a454;
+}
+#main #transactions .transactions__table tbody tr td.expense, #main #transactions .transactions__table tbody tr td.minus {
+  color: #be3434;
+}
+#main #transactions .transactions__table tbody tr td.edit, #main #transactions .transactions__table tbody tr td.minus {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+footer {
+  color: #b93838;
+  text-align: center;
+  margin: 4rem 0 2rem;
+  opacity: 0.7;
+}
+
+.card__container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(3, 250px);
+  gap: 30px;
+  margin: 2rem 0;
+}
+.card__container .card {
+  background: #fff;
+  border-radius: 0.25rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+.card__container .card:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+.card__container .card .card__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #1d0a0a;
+  font-weight: normal;
+}
+.card__container .card .card__title i {
+  font-size: 1.5rem;
+}
+.card__container .card .card__title i.income-icon {
+  color: #12a454;
+}
+.card__container .card .card__title i.expense-icon {
+  color: #be3434;
+}
+.card__container .card .card__price {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.7rem;
+  line-height: 3rem;
+  margin-top: 0.5rem;
+  word-break: break-all;
+}
+.card__container .card.total {
+  background: #18ad5e !important;
+  transition: 0.5s;
+}
+.card__container .card.total.negative {
+  background-color: #d34040 !important;
+}
+.card__container .card.total .card__title,
+.card__container .card.total .card__price {
+  color: #fff;
+}
+@media only screen and (max-width: 850px) {
+  .card__container {
+    display: block;
+  }
+}
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+}
+#modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+#modal-overlay.active .modal {
+  animation: show 0.5s ease-in-out;
+}
+#modal-overlay .modal {
+  background-color: #f0f2f5;
+  padding: 2.4rem;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 0.25rem;
+}
+#modal-overlay .modal #form {
+  max-width: 500px;
+}
+#modal-overlay .modal #form form input {
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.8rem;
+  width: 100%;
+}
+#modal-overlay .modal #form .input-group {
+  margin-top: 0.8rem;
+}
+#modal-overlay .modal #form .input-group small {
+  opacity: 0.4;
+}
+#modal-overlay .modal #form .input-group.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+#modal-overlay .modal #form .input-group.actions .btn,
+#modal-overlay .modal #form .input-group.actions button {
+  width: 48%;
+}
+#modal-overlay .modal #form .input-group.actions .cancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #be3434;
+  border-radius: 0.25rem;
+  border: 2px #be3434 solid;
+  text-decoration: none;
+  height: 50px;
+  opacity: 0.6;
+}
+#modal-overlay .modal #form .input-group.actions .cancel:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+@keyframes show {
+  from {
+    transform: translate3d(0, -500px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+button {
+  background: #12a454;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0.8;
+  width: 100%;
+  height: 50px;
+  z-index: 30000;
+}
+button.pdf {
+  float: right;
+  width: 150px;
+}
+button:hover {
+  opacity: 1;
+  transition: 0.6s;
+}
+
+.btn-new {
+  display: inline-block;
+  color: #12a454;
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+}
+.btn-new.fixed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #12a454;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2.5rem;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  z-index: 200;
+}
+.btn-new.fixed:hover {
+  transition: 0.5s;
+  background: #36bd73;
+}
+.btn-new:hover {
+  color: #1f6e54;
+  transition: 0.5s;
+}
+
+body[data-theme=dark] {
+  background-color: #111418;
+}
+
+[data-theme=dark] #header {
+  background: linear-gradient(to bottom, #550d1d, #1a0106 130%);
+}
+[data-theme=dark] .card__container .card {
+  background: #191d20;
+}
+[data-theme=dark] .card__container .card .card__title,
+[data-theme=dark] .card__container .card .card__price {
+  color: #fff;
+}
+[data-theme=dark] #main #transactions .transactions__table {
+  color: #cfcfcf;
+}
+[data-theme=dark] #main #transactions thead tr th {
+  background: #191d20;
+}
+[data-theme=dark] #main #transactions tbody tr td {
+  background: #191d20;
+}
+[data-theme=dark] #main #transactions tbody tr td.description {
+  color: #fff;
+}
+[data-theme=dark] #modal-overlay .modal {
+  background: #191d20;
+  color: #fff;
+}
+
+/*# sourceMappingURL=style.css.map */

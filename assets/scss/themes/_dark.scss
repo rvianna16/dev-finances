@@ -1,0 +1,57 @@
+@use '../helpers/variables' as var;
+
+body[data-theme='dark'] {
+  background-color: var.$bodyColorDark;
+}
+
+[data-theme='dark'] {
+  #header {
+    background: var.$headerColorDark;
+  }
+
+  .card__container {
+    .card {
+      background: var.$cardColorDark;
+
+      .card__title,
+      .card__price {
+        color: #fff;
+      }
+    }
+  }
+
+  #main {
+    #transactions {
+      .transactions__table {
+        color: rgb(207, 207, 207);
+      }
+
+      thead {
+        tr {
+          th {
+            background: var.$cardColorDark;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            background: var.$cardColorDark;
+
+            &.description {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #modal-overlay {
+    .modal {
+      background: var.$cardColorDark;
+      color: #fff;
+    }
+  }
+}
